@@ -8,7 +8,7 @@ unlogin_kb = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.register_button, b
 login_menu_kb_unstudent = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.profile_button, bt.setting_button).add(bt.show_timetables_button).add(bt.sign_up_for_the_section).add(bt.report_button, bt.show_answers)
 login_menu_kb_student = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.my_objects, bt.sign_up_for_the_section).add(bt.profile_button, bt.setting_button).add(bt.show_timetables_button).add(bt.report_button, bt.show_answers)
 login_menu_kb_tutor = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.my_lessons, bt.send_alert).add(bt.profile_button, bt.setting_button).add(bt.show_timetables_button).add(bt.report_button, bt.show_answers)
-login_menu_kb_admin = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.work_with_tutors, bt.send_alert, bt.work_with_reports).add(bt.profile_button, bt.setting_button).add(bt.show_timetables_button).add(bt.report_button, bt.show_answers)
+login_menu_kb_admin = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.work_with_tutors, bt.send_alert, bt.work_with_reports).add(bt.profile_button, bt.setting_button).add(bt.check_contracts, bt.show_timetables_button).add(bt.report_button, bt.show_answers)
 
 login_menu = {
     '0': login_menu_kb_unstudent,
@@ -26,7 +26,7 @@ login_menu = {
 
 
 def make_alert_kb(lessons) -> ReplyKeyboardMarkup:
-    result = ReplyKeyboardMarkup(resize_keyboard=True).add(bt.send_all)
+    result = ReplyKeyboardMarkup(resize_keyboard=True)
     for i in lessons:
         button = bt.KeyboardButton(i)
         result.add(button)

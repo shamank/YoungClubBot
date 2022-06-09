@@ -3,8 +3,16 @@ import database
 
 d = database.dbase()
 
-d.start_db()
-#d.delete_tables()
+contracts = d.show_all_contracts()
+print(contracts)
+
+from functions import generate_excel
+
+result = generate_excel(contracts, 123123)
+print(result)
+
+#d.start_db()
+# d.delete_tables()
 
 # print(b'a')
 # print('a'.encode())

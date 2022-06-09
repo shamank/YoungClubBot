@@ -3,6 +3,8 @@ import re
 import random
 import string
 
+import openpyxl.styles
+from openpyxl import Workbook
 
 def encrypt_password(password: str):
     t = hashlib.sha256(password.encode())
@@ -30,7 +32,7 @@ def print_profile(profile):
 
 def print_lessons(lessons):
     text = ''
-    if len(lessons) > 2:
+    if len(lessons[0]) > 2:
         for i in lessons:
             l = '\n'.join(i[1].split('&'))
             text += f"""
@@ -137,4 +139,19 @@ def print_tutors(tutors):
             text += f", {i[0]}"
         prev = tutor_id
     return text
+
+def generate_excel(contracts, user_tg):
+    filename = 'excels\\' + str(user_tg) + '.xlsx'
+
+    wb = Workbook()
+    ws = wb.active
+    cols, conts = contracts
+
+    ws.append(cols)
+
+    for i in conts:
+        ws.append(i)
+    wb.save(filename)
+
+    return filename
 

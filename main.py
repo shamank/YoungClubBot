@@ -119,7 +119,7 @@ async def login2(message: types.Message, state: FSMContext):
 
         if user[-2]:
             st = dp.current_state(chat=user[-2])
-            await bot.send_message(user[-2], '[Внимание!]\n\nБыл произведен вход с другого устройства', reply_markup=keyboards.rm_kb)
+            await bot.send_message(user[-2], '[Внимание!]\n\nБыл произведен вход с другого устройства', reply_markup=keyboards.unlogin_kb)
             await st.set_state('unauth')
 
         role = str(db.get_role(message.from_user.id))
@@ -337,9 +337,6 @@ async def auth_3(message: types.Message, state: FSMContext):
         await state.set_state('work_with_tutors')
         await message.answer(message.text, reply_markup=keyboards.work_with_tutors)
 
-    elif message.text == '👨🏻‍🎓 Ученики':
-        pass
-
     elif message.text == '🔬 Репорты':
         reports = db.check_reports()
         async with state.proxy() as data:
@@ -355,6 +352,12 @@ async def auth_3(message: types.Message, state: FSMContext):
     elif message.text == '⚙ Настройки':
         await state.set_state('settings')
         await message.answer(message.text, reply_markup=keyboards.settings_kb)
+
+    elif message.text == '📖 Просмотреть контракты':
+        contracts = db.show_all_contracts()
+        filename = generate_excel(contracts, message.from_user.id)
+        doc = open(filename, 'rb')
+        await bot.send_document(message.chat.id, doc)
 
     elif message.text == '📢 Создать объявление':
         lessons = db.get_all_lessons()

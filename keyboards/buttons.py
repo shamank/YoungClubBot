@@ -13,7 +13,7 @@ cancel_button = KeyboardButton('❌ Отменить')
 
 # student
 profile_button = KeyboardButton('🧑‍💻 Профиль')
-report_button = KeyboardButton('📬 Задать вопрос / сообщить об ошибке')
+report_button = KeyboardButton('📎 Задать вопрос / сообщить об ошибке')
 show_answers = KeyboardButton('📖 Просмотреть ответы')
 
 my_objects = KeyboardButton('⏰ Мои занятия')
@@ -30,6 +30,8 @@ send_alert = KeyboardButton('📢 Создать объявление')
 work_with_tutors = KeyboardButton('👨🏻‍🏫 Преподаватели')
 work_with_students = KeyboardButton('👨🏻‍🎓 Ученики')
 work_with_reports = KeyboardButton('🔬 Репорты')
+
+check_contracts = KeyboardButton('📖 Просмотреть контракты')
 
 show_all_tutors = KeyboardButton('🧾 Показать всех преподавателей')
 show_all_students = KeyboardButton('🧾 Показать всех учеников')

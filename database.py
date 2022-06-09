@@ -24,7 +24,6 @@ class dbase:
         db = self.mysql_connect()
         try:
             sql = """            
-                
                 CREATE TABLE IF NOT EXISTS Role (
                   RoleID INT(10) UNIQUE,
                   Name VARCHAR(25) NOT NULL,
@@ -128,7 +127,7 @@ class dbase:
                   User INT(10) NOT NULL,
                   Section INT(10) NOT NULL,
                   Register_at DATE DEFAULT (CURRENT_DATE),
-                  Until DATE DEFAULT (DATE_ADD(CURRENT_DATE, INTERVAL 90 DAY),
+                  Until DATE DEFAULT (DATE_ADD(CURRENT_DATE, INTERVAL 90 DAY)),
                   
                   PRIMARY KEY (ContractID),
                   FOREIGN KEY (User) REFERENCES User (UserID) ON DELETE CASCADE,
@@ -142,9 +141,6 @@ class dbase:
                         (4, 5, 2, '2022-06-22', '2023-01-01'),
                         (5, 6, 5, '2022-06-23', '2023-01-01'),
                         (6, 6, 6, '2022-07-01', '2023-01-01');
-            
-                
- 
 
             """
 
@@ -627,7 +623,7 @@ class dbase:
             print('Ошибка в обновлении роли!', datetime.now(), e)
         db.close()
 
-# __________ CREATE CONTRACTS ________ #
+# __________ CONTRACTS ________ #
     def make_new_contract(self, user_id, section_id):
         db = self.mysql_connect()
         try:
@@ -640,6 +636,28 @@ class dbase:
         except Exception as e:
             print('Ошибка в создании контракта', datetime.now(), e)
         db.close()
+
+    def show_all_contracts(self):
+        db = self.mysql_connect()
+        result = None
+        cols = None
+        try:
+            sql = """
+            SELECT `Contract`.`ContractID`, `User`.`FirstName`, `User`.`LastName`, `User`.`Email`, 
+            `Section`.`Name`, `Contract`.`Register_at`, `Contract`.`Until`
+            FROM `Contract`
+            INNER JOIN `User` ON `Contract`.`User` = `User`.`UserID`
+            INNER JOIN `Section` ON `Contract`.`Section` = `Section`.`SectionID`;
+            """
+            cur = db.cursor()
+            cur.execute(sql)
+            cols = [i[0] for i in cur.description]
+            result = cur.fetchall()
+        except Exception as e:
+            print('Ошибка в просмотре контрактов!', datetime.now(), e)
+        db.close()
+        return cols, result
+
 
 # __________ REPORTS ________ #
 
