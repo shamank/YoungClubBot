@@ -723,9 +723,10 @@ class dbase:
             sql = """
             SELECT `Report`.`ReportID`, `Report`.`From_User`, 
             `User`.`FirstName`, `User`.`LastName`, `User`.`Email`, 
-            `Report`.`Message`, `Report`.`creating_at`
+            `Report`.`Message`, `Report`.`creating_at`, `Role`.`Name`
             FROM `Report`
             INNER JOIN `User` ON `User`.`UserID` = `Report`.`From_User`
+            INNER JOIN `Role` ON `User`.`Role`  = `Role`.`RoleID`
             WHERE `Report`.`is_active`
             ORDER BY `Report`.`creating_at`;
             """
