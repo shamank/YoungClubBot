@@ -239,7 +239,7 @@ async def auth_0(message: types.Message, state: FSMContext):
         text = print_lessons(lessons)
         await message.answer(text)
 
-    elif message.text == '📬 Задать вопрос / сообщить об ошибке':
+    elif message.text == '📎 Задать вопрос / сообщить об ошибке':
         await ReportState.MakeMessage.set()
         await message.answer('Напишите ваше сообщение\n\n[Введите /cancel для отмены]', reply_markup=keyboards.rm_kb)
 
@@ -283,7 +283,7 @@ async def auth_1(message: types.Message, state: FSMContext):
         text = print_lessons(lessons)
         await message.answer(text)
 
-    elif message.text == '📬 Задать вопрос / сообщить об ошибке':
+    elif message.text == '📎 Задать вопрос / сообщить об ошибке':
         await ReportState.MakeMessage.set()
         await message.answer('Напишите ваше сообщение\n\n[Введите /cancel для отмены]', reply_markup=keyboards.rm_kb)
 
@@ -321,7 +321,7 @@ async def auth_2(message: types.Message, state: FSMContext):
         text = print_lessons(lessons)
         await message.answer(text)
 
-    elif message.text == '📬 Задать вопрос / сообщить об ошибке':
+    elif message.text == '📎 Задать вопрос / сообщить об ошибке':
         await ReportState.MakeMessage.set()
         await message.answer('Напишите ваше сообщение\n\n[Введите /cancel для отмены]', reply_markup=keyboards.rm_kb)
 
@@ -366,7 +366,7 @@ async def auth_3(message: types.Message, state: FSMContext):
         await message.answer('Выберите, участникам какой секции хотите отправить сообщение', reply_markup=rm)
         await MakeAlert.ChooseSection.set()
 
-    elif message.text == '📬 Задать вопрос / сообщить об ошибке':
+    elif message.text == '📎 Задать вопрос / сообщить об ошибке':
         await ReportState.MakeMessage.set()
         await message.answer('Напишите ваше сообщение\n\n[Введите /cancel для отмены]', reply_markup=keyboards.rm_kb)
 
