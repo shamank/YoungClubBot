@@ -217,7 +217,7 @@ async def auth_0(message: types.Message, state: FSMContext):
         text = print_profile(user_data)
         await message.answer(text)
 
-    elif message.text == '⚙ Настройки':
+    elif message.text == '⚙ Настроить профиль':
         await state.set_state('settings')
         await message.answer(message.text, reply_markup=keyboards.settings_kb)
 
@@ -260,7 +260,7 @@ async def auth_1(message: types.Message, state: FSMContext):
         text = print_profile(user_data)
         await message.answer(text)
 
-    elif message.text == '⚙ Настройки':
+    elif message.text == '⚙ Настроить профиль':
         await state.set_state('settings')
         await message.answer(message.text, reply_markup=keyboards.settings_kb)
 
@@ -312,7 +312,7 @@ async def auth_2(message: types.Message, state: FSMContext):
         text = print_profile(user_data)
         await message.answer(text)
 
-    elif message.text == '⚙ Настройки':
+    elif message.text == '⚙ Настроить профиль':
         await state.set_state('settings')
         await message.answer(message.text, reply_markup=keyboards.settings_kb)
 
@@ -349,7 +349,7 @@ async def auth_3(message: types.Message, state: FSMContext):
         text = print_profile(user_data)
         await message.answer(text)
 
-    elif message.text == '⚙ Настройки':
+    elif message.text == '⚙ Настроить профиль':
         await state.set_state('settings')
         await message.answer(message.text, reply_markup=keyboards.settings_kb)
 

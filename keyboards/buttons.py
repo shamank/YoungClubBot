@@ -42,7 +42,7 @@ add_to_section = KeyboardButton('Добавить на секцию')
 
 
 
-setting_button = KeyboardButton('⚙ Настройки')
+setting_button = KeyboardButton('⚙ Настроить профиль')
 show_timetables_button = KeyboardButton('📃 Просмотр графика занятий')
 
 
